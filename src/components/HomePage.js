@@ -1,168 +1,35 @@
 import React from "react";
-import { Card, Col, Container, Row } from "react-bootstrap";
-import bgImage from "../assets/images/bgimg.jpg";
+import { useEffect } from "react";
+import { Spinner } from "react-bootstrap";
+import { connect } from "react-redux";
+import IssuesList from "./IssuesList";
+import { fetchIssuesAPI } from "./redux/actions/IssueActions";
 
-const HomePage = () => {
-  return (
+const HomePage = ({ issuesData, fetchIssues }) => {
+  useEffect(() => {
+    fetchIssues();
+  }, []);
+  console.log("ISSUE LIST", issuesData.issues);
+  return issuesData.loading ? (
+    <Spinner animation="border" variant="success" />
+  ) : issuesData.error ? (
+    <h2>{issuesData.error}</h2>
+  ) : (
     <div>
-      <Container>
-        <Row>
-          <Col>
-            <Card
-              className="bg-dark mt-3 text-white"
-              style={{ width: "15rem" }}
-            >
-              <Card.Img
-                src={bgImage}
-                alt="Card image"
-                style={{ height: "12rem" }}
-              />
-              <Card.ImgOverlay>
-                <Card.Title>Card title</Card.Title>
-                <Card.Subtitle className="mt-3 mb-5 text-muted">
-                  Card Subtitle
-                </Card.Subtitle>
-                <h6>View Details</h6>
-              </Card.ImgOverlay>
-            </Card>
-          </Col>
-          <Col>
-            <Card
-              className="bg-dark mt-3 text-white"
-              style={{ width: "15rem" }}
-            >
-              <Card.Img
-                src={bgImage}
-                alt="Card image"
-                style={{ height: "12rem" }}
-              />
-              <Card.ImgOverlay>
-                <Card.Title>Card title</Card.Title>
-                <Card.Subtitle className="mt-3 mb-5 text-muted">
-                  Card Subtitle
-                </Card.Subtitle>
-                <h6>View Details</h6>
-              </Card.ImgOverlay>
-            </Card>
-          </Col>
-          <Col>
-            <Card
-              className="bg-dark mt-3 text-white"
-              style={{ width: "15rem" }}
-            >
-              <Card.Img
-                src={bgImage}
-                alt="Card image"
-                style={{ height: "12rem" }}
-              />
-              <Card.ImgOverlay>
-                <Card.Title>Card title</Card.Title>
-                <Card.Subtitle className="mt-3 mb-5 text-muted">
-                  Card Subtitle
-                </Card.Subtitle>
-                <h6>View Details</h6>
-              </Card.ImgOverlay>
-            </Card>
-          </Col>
-          <Col>
-            <Card
-              className="bg-dark mt-3 text-white"
-              style={{ width: "15rem" }}
-            >
-              <Card.Img
-                src={bgImage}
-                alt="Card image"
-                style={{ height: "12rem" }}
-              />
-              <Card.ImgOverlay>
-                <Card.Title>Card title</Card.Title>
-                <Card.Subtitle className="mt-3 mb-5 text-muted">
-                  Card Subtitle
-                </Card.Subtitle>
-                <h6>View Details</h6>
-              </Card.ImgOverlay>
-            </Card>
-          </Col>
-          <Col>
-            <Card
-              className="bg-dark mt-3 text-white"
-              style={{ width: "15rem" }}
-            >
-              <Card.Img
-                src={bgImage}
-                alt="Card image"
-                style={{ height: "12rem" }}
-              />
-              <Card.ImgOverlay>
-                <Card.Title>Card title</Card.Title>
-                <Card.Subtitle className="mt-3 mb-5 text-muted">
-                  Card Subtitle
-                </Card.Subtitle>
-                <h6>View Details</h6>
-              </Card.ImgOverlay>
-            </Card>
-          </Col>
-          <Col>
-            <Card
-              className="bg-dark mt-3 text-white"
-              style={{ width: "15rem" }}
-            >
-              <Card.Img
-                src={bgImage}
-                alt="Card image"
-                style={{ height: "12rem" }}
-              />
-              <Card.ImgOverlay>
-                <Card.Title>Card title</Card.Title>
-                <Card.Subtitle className="mt-3 mb-5 text-muted">
-                  Card Subtitle
-                </Card.Subtitle>
-                <h6>View Details</h6>
-              </Card.ImgOverlay>
-            </Card>
-          </Col>
-          <Col>
-            <Card
-              className="bg-dark mt-3 text-white"
-              style={{ width: "15rem" }}
-            >
-              <Card.Img
-                src={bgImage}
-                alt="Card image"
-                style={{ height: "12rem" }}
-              />
-              <Card.ImgOverlay>
-                <Card.Title>Card title</Card.Title>
-                <Card.Subtitle className="mt-3 mb-5 text-muted">
-                  Card Subtitle
-                </Card.Subtitle>
-                <h6>View Details</h6>
-              </Card.ImgOverlay>
-            </Card>
-          </Col>
-          <Col>
-            <Card
-              className="bg-dark mt-3 text-white"
-              style={{ width: "15rem" }}
-            >
-              <Card.Img
-                src={bgImage}
-                alt="Card image"
-                style={{ height: "12rem" }}
-              />
-              <Card.ImgOverlay>
-                <Card.Title>Card title</Card.Title>
-                <Card.Subtitle className="mt-3 mb-5 text-muted">
-                  Card Subtitle
-                </Card.Subtitle>
-                <h6>View Details</h6>
-              </Card.ImgOverlay>
-            </Card>
-          </Col>
-        </Row>
-      </Container>
+      <IssuesList issues={issuesData.issues}></IssuesList>
     </div>
   );
 };
 
-export default HomePage;
+const mapStateToProps = (state) => {
+  return {
+    issuesData: state.issues,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchIssues: () => dispatch(fetchIssuesAPI()),
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
