@@ -1,4 +1,7 @@
 import {
+  ADD_ISSUE_FAILURE,
+  ADD_ISSUE_REQUEST,
+  ADD_ISSUE_SUCCESS,
   FETCH_ISSUES_ERROR,
   FETCH_ISSUES_REQUEST,
   FETCH_ISSUES_SUCCESS,
@@ -26,6 +29,26 @@ export const fetchIssuesError = (error) => {
   };
 };
 
+export const addIssue = () => {
+  return {
+    type: ADD_ISSUE_REQUEST,
+  };
+};
+
+export const addIssueSuccess = (payload) => {
+  return {
+    type: ADD_ISSUE_SUCCESS,
+    payload: payload,
+  };
+};
+
+export const addIssueFailure = (error) => {
+  return {
+    type: ADD_ISSUE_FAILURE,
+    payload: error,
+  };
+};
+
 export const fetchIssuesAPI = () => {
   return (dispatch) => {
     dispatch(fetchIssues());
@@ -36,6 +59,20 @@ export const fetchIssuesAPI = () => {
       })
       .catch((err) => {
         dispatch(fetchIssuesError(err.message));
+      });
+  };
+};
+
+export const addIssueAPI = (issueObj) => {
+  return (dispatch) => {
+    dispatch(addIssue);
+    axios
+      .post("http://localhost:30001/Issues", issueObj)
+      .then((response) => {
+        dispatch(addIssueSuccess(response.status));
+      })
+      .catch((err) => {
+        dispatch(addIssueFailure(err.message));
       });
   };
 };

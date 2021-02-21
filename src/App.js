@@ -6,12 +6,14 @@ import NavBar from "./components/NavBar";
 import store from "./components/redux/store";
 import SignUp from "./components/SignUp";
 import SignIn from "./components/SignIn";
+import AddIssue from "./components/AddIssue";
 function App() {
   return (
     <Provider store={store}>
       <div className="App">
         <NavBar></NavBar>
-        <SignIn></SignIn>
+        <AddIssue></AddIssue>
+        {/* <SignIn></SignIn> */}
         {/* <SignUp></SignUp> */}
         {/* <HomePage></HomePage> */}
       </div>
