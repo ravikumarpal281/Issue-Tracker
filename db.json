@@ -93,6 +93,24 @@
       "email": "three@issues.com",
       "password": "three",
       "id": 4
+    },
+    {
+      "email": "three@issues.com",
+      "password": "three",
+      "firstName": "THREE",
+      "lastName": "THREE",
+      "location": "Noida",
+      "mobileNumber": 1234567890,
+      "id": 5
+    },
+    {
+      "email": "ravi.proudindian@gmail.com",
+      "password": "123",
+      "firstName": "RAVI",
+      "lastName": "PAL",
+      "location": "Hyderabad",
+      "mobileNumber": "07829820381",
+      "id": 6
     }
   ]
 }

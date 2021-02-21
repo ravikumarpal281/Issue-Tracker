@@ -2,8 +2,10 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import React from "react";
 import { Button, Container, Form, Row, Col } from "react-bootstrap";
+import { registerUserAPI } from "./redux/actions/UserActions";
+import { connect } from "react-redux";
 
-const SignUp = () => {
+const SignUp = ({ registerUser }) => {
   const formik = useFormik({
     initialValues: {
       Email: "",
@@ -23,6 +25,16 @@ const SignUp = () => {
     }),
     onSubmit: (values) => {
       console.log("Submit Handle VALUES", values);
+
+      registerUser({
+        email: values.Email,
+        password: values.Password,
+        firstName: values.FirstName,
+        lastName: values.LastName,
+        location: values.Location,
+        mobileNumber: values.MobileNumber,
+      });
+      alert("User Registration Successful");
     },
   });
 
@@ -122,4 +134,10 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    registerUser: (userDetails) => dispatch(registerUserAPI(userDetails)),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(SignUp);
