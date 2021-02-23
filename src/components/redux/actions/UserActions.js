@@ -3,6 +3,7 @@ import {
   LOGIN_USER_REQUEST,
   LOGIN_USER_REQUEST_ERROR,
   LOGIN_USER_REQUEST_SUCCESS,
+  LOGOUT_USER,
   REGISTER_USER_ERROR,
   REGISTER_USER_RQUEST,
   REGISTER_USER_SUCCESS,
@@ -46,6 +47,12 @@ export const loginUserError = (error) => {
   return {
     type: LOGIN_USER_REQUEST_ERROR,
     payload: error,
+  };
+};
+
+export const logoutuser = () => {
+  return {
+    type: LOGOUT_USER,
   };
 };
 

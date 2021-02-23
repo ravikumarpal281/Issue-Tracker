@@ -2,15 +2,31 @@ import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Button, Container, Form } from "react-bootstrap";
-import { connect } from "react-redux";
-import { addIssueAPI } from "./redux/actions/IssueActions";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
-const AddIssue = (props) => {
+const EditIssue = (props) => {
+  const [issueState, setstate] = useState({
+    id: "",
+    description: "",
+    severity: "",
+    status: "",
+  });
+
+  useEffect(() => {
+    console.log("Props Id", props.match.params.id);
+    axios
+      .get(`http://localhost:30001/Issues/${props.match.params.id}`)
+      .then((response) => setstate(response.data))
+      .catch((error) => console.error(error.message));
+  }, []);
+
   const formik = useFormik({
+    enableReinitialize: true,
     initialValues: {
-      Description: "",
-      Severity: "Critical",
-      Status: "Open",
+      Description: issueState.description,
+      Severity: issueState.severity,
+      Status: issueState.status,
     },
     validationSchema: Yup.object({
       Description: Yup.string()
@@ -21,20 +37,20 @@ const AddIssue = (props) => {
       Status: Yup.string().required("Status is required"),
     }),
     onSubmit: (values) => {
-      const addIssue = props.addIssue;
-      addIssue({
-        description: values.Description,
-        severity: values.Severity,
-        status: values.Status,
-      });
+      axios
+        .patch(`http://localhost:30001/Issues/${props.match.params.id}`, {
+          description: values.Description,
+          severity: values.Severity,
+          status: values.Status,
+        })
+        .catch((err) => console.error(err.message));
       props.history.push({ pathname: "/" });
     },
   });
-
   return (
     <div>
       <Container>
-        <h1>Add Issue</h1>
+        <h1>Edit Issue</h1>
         <Form onSubmit={formik.handleSubmit}>
           <Form.Group>
             <Form.Label>Description</Form.Label>
@@ -95,17 +111,14 @@ const AddIssue = (props) => {
               <label style={{ marginLeft: "3px" }}>Closed</label>
             </label>
           </Form.Group>
-
-          <Button type="submit">Submit</Button>
+          <Button type="submit">Submit</Button>{" "}
+          <Button onClick={() => props.history.push({ pathname: "/" })}>
+            Cancel
+          </Button>
         </Form>
       </Container>
     </div>
   );
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    addIssue: (issueObj) => dispatch(addIssueAPI(issueObj)),
-  };
-};
-export default connect(null, mapDispatchToProps)(AddIssue);
+export default EditIssue;

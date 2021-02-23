@@ -9,22 +9,20 @@ import SignIn from "./components/SignIn";
 import AddIssue from "./components/AddIssue";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import IssueDetails from "./components/IssueDetails";
+import EditIssue from "./components/EditIssue";
 function App() {
   return (
     <Provider store={store}>
       <BrowserRouter>
         <div className="App">
           <NavBar></NavBar>
-          {/* <AddIssue></AddIssue> */}
-          {/* <SignIn></SignIn> */}
-          {/* <SignUp></SignUp> */}
-          {/* <HomePage></HomePage> */}
           <Switch>
             <Route path="/" exact component={HomePage}></Route>
             <Route path="/AddIssue" exact component={AddIssue} />
             <Route path="/Login" exact component={SignIn} />
             <Route path="/Register" exact component={SignUp} />
-            <Route path="/issueDetails" exact component={IssueDetails} />
+            <Route path="/issue/:id" exact component={IssueDetails} />
+            <Route path="/editIssue/:id" exact component={EditIssue} />
           </Switch>
         </div>
       </BrowserRouter>

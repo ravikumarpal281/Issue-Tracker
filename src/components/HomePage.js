@@ -9,8 +9,7 @@ const HomePage = ({ issuesData, userData, fetchIssues }) => {
   useEffect(() => {
     fetchIssues();
   }, []);
-  console.log("ISSUE LIST", issuesData.issues);
-  console.log("Users Data", userData.currentUser[0]);
+
   const checkUser = userData.currentUser[0];
   const user = userData.currentUser[0] ? (
     <h2>Welcome {checkUser.email}</h2>
