@@ -16,7 +16,11 @@ const SignIn = (props) => {
       Password: Yup.string().required("Password is required"),
     }),
     onSubmit: (values) => {
+      console.log("Before dispatch login");
       props.loginUser(values);
+      console.log("On Submit", values);
+      console.log("Current STATE", props.userData);
+      props.history.push({ pathname: "/" });
     },
   });
 
@@ -66,7 +70,7 @@ const SignIn = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    userData: state.users.currentUser,
+    userData: state.users,
   };
 };
 const mapDispatchToProps = (dispatch) => {

@@ -19,21 +19,25 @@ const UserReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: true,
+        error: "",
       };
     case REGISTER_USER_SUCCESS:
       return {
         ...state,
         loading: false,
+        error: "",
       };
     case REGISTER_USER_ERROR:
       return {
         ...state,
         loading: false,
+        error: action.payload,
       };
     case LOGIN_USER_REQUEST:
       return {
         ...state,
         loading: true,
+        error: "",
       };
     case LOGIN_USER_REQUEST_SUCCESS:
       console.log("Login Success REDUCER", state);
@@ -41,11 +45,13 @@ const UserReducer = (state = initialState, action) => {
         ...state,
         loading: false,
         currentUser: action.payload,
+        error: "",
       };
     case LOGIN_USER_REQUEST_ERROR:
       return {
         ...state,
         loading: false,
+        error: action.payload,
       };
     default:
       return state;

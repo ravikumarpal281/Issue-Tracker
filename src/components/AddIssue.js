@@ -27,6 +27,7 @@ const AddIssue = (props) => {
         severity: values.Severity,
         status: values.Status,
       });
+      props.history.push({ pathname: "/" });
     },
   });
 

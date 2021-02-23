@@ -1,9 +1,9 @@
 import React from "react";
 import { Button, Card, Col, Container, Row, Spinner } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import bgImage from "../assets/images/bgimg.jpg";
 
 const IssuesList = ({ issues }) => {
-  console.log("ISSUES ISSUELIST" + issues);
   const issueListToDisplay = issues.map((item) => (
     <Col key={item.id}>
       <Card className="bg-dark mt-3 text-white" style={{ width: "15rem" }}>

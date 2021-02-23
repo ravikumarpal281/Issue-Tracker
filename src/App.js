@@ -7,16 +7,27 @@ import store from "./components/redux/store";
 import SignUp from "./components/SignUp";
 import SignIn from "./components/SignIn";
 import AddIssue from "./components/AddIssue";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import IssueDetails from "./components/IssueDetails";
 function App() {
   return (
     <Provider store={store}>
-      <div className="App">
-        <NavBar></NavBar>
-        <AddIssue></AddIssue>
-        {/* <SignIn></SignIn> */}
-        {/* <SignUp></SignUp> */}
-        {/* <HomePage></HomePage> */}
-      </div>
+      <BrowserRouter>
+        <div className="App">
+          <NavBar></NavBar>
+          {/* <AddIssue></AddIssue> */}
+          {/* <SignIn></SignIn> */}
+          {/* <SignUp></SignUp> */}
+          {/* <HomePage></HomePage> */}
+          <Switch>
+            <Route path="/" exact component={HomePage}></Route>
+            <Route path="/AddIssue" exact component={AddIssue} />
+            <Route path="/Login" exact component={SignIn} />
+            <Route path="/Register" exact component={SignUp} />
+            <Route path="/issueDetails" exact component={IssueDetails} />
+          </Switch>
+        </div>
+      </BrowserRouter>
     </Provider>
   );
 }

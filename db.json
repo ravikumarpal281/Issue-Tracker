@@ -55,16 +55,32 @@
       "id": 9
     },
     {
-      "description": "Redux Issue",
+      "description": "Issue in CP After Patch",
       "severity": "Critical",
       "status": "Open",
       "id": 10
     },
     {
-      "description": "Issue in CP",
+      "description": "Issue in CP After Update",
+      "id": 11
+    },
+    {
+      "description": "Issue After Adding Routing",
+      "severity": "Major",
+      "status": "In Progress",
+      "id": 12
+    },
+    {
+      "description": "Home Nav Test",
       "severity": "Critical",
       "status": "Open",
-      "id": 11
+      "id": 13
+    },
+    {
+      "description": "Home Nav Test Two",
+      "severity": "Minor",
+      "status": "Closed",
+      "id": 14
     }
   ],
   "Users": [
