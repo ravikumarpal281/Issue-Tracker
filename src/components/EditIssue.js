@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 const EditIssue = (props) => {
   const [issueState, setstate] = useState({
     id: "",
+    name: "",
     description: "",
     severity: "",
     status: "",
@@ -24,11 +25,16 @@ const EditIssue = (props) => {
   const formik = useFormik({
     enableReinitialize: true,
     initialValues: {
+      Name: issueState.name,
       Description: issueState.description,
       Severity: issueState.severity,
       Status: issueState.status,
     },
     validationSchema: Yup.object({
+      Name: Yup.string()
+        .min(2, "Minimum two characters required")
+        .max(20, "Max twenty characters can be used for Name")
+        .required("Name is reuired"),
       Description: Yup.string()
         .min(2, "Minimum two characters required")
         .max(50, "Max fifty characters")
@@ -39,6 +45,7 @@ const EditIssue = (props) => {
     onSubmit: (values) => {
       axios
         .patch(`http://localhost:30001/Issues/${props.match.params.id}`, {
+          name: values.Name,
           description: values.Description,
           severity: values.Severity,
           status: values.Status,
@@ -52,6 +59,18 @@ const EditIssue = (props) => {
       <Container>
         <h1>Edit Issue</h1>
         <Form onSubmit={formik.handleSubmit}>
+          <Form.Group>
+            <Form.Label>Name</Form.Label>
+            <Form.Control
+              type="text"
+              name="Name"
+              onChange={formik.handleChange}
+              value={formik.values.Name}
+            ></Form.Control>
+            {formik.errors.Name && formik.touched.Name && (
+              <p style={{ color: "red" }}>{formik.errors.Name}</p>
+            )}
+          </Form.Group>
           <Form.Group>
             <Form.Label>Description</Form.Label>
             <Form.Control

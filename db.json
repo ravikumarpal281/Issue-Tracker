@@ -2,47 +2,55 @@
   "Issues": [
     {
       "id": 1,
+      "name": "Issue One",
       "description": "On Clicking Delete, the application crashes",
       "severity": "Critical",
       "status": "Open"
     },
     {
       "id": 2,
+      "name": "Issue Two After Edit",
       "description": "The heading Add is wrongly displayed as Edit",
       "severity": "Minor",
       "status": "Closed"
     },
     {
       "id": 3,
+      "name": "Issue Three",
       "description": "The payment functionality is missing",
       "severity": "Major",
       "status": "In Progress"
     },
     {
+      "name": "Issue Five",
       "description": "After EDIT Third",
       "severity": "Critical",
       "status": "In Progress",
       "id": 5
     },
     {
+      "name": "Issue Six",
       "description": "ABCDEF",
       "severity": "Critical",
       "status": "Open",
       "id": 6
     },
     {
+      "name": "Issue Seven",
       "description": "SCREENSHOT",
       "severity": "Major",
       "status": "In Progress",
       "id": 7
     },
     {
+      "name": "Issue Eight",
       "description": "New One",
       "severity": "Critical",
       "status": "Open",
       "id": 8
     },
     {
+      "name": "Issue Nine",
       "description": "Issue after PATCHING TWO",
       "severity": "Major",
       "status": "Open",

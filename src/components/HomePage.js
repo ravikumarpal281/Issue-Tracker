@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import IssuesList from "./IssuesList";
 import { fetchIssuesAPI } from "./redux/actions/IssueActions";
 
-const HomePage = ({ issuesData, userData, fetchIssues }) => {
+const HomePage = ({ issuesData, userData, issueClicks, fetchIssues }) => {
   useEffect(() => {
     fetchIssues();
   }, []);
@@ -14,7 +14,7 @@ const HomePage = ({ issuesData, userData, fetchIssues }) => {
   const user = userData.currentUser[0] ? (
     <h2>Welcome {checkUser.email}</h2>
   ) : null;
-
+  console.log("State of UserCLICKS", issueClicks);
   return issuesData.loading ? (
     <Spinner animation="border" variant="success" />
   ) : issuesData.error ? (
@@ -31,6 +31,7 @@ const mapStateToProps = (state) => {
   return {
     issuesData: state.issues,
     userData: state.users,
+    issueClicks: state.issueClicks,
   };
 };
 

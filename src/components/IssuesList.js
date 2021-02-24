@@ -3,19 +3,25 @@ import { useState } from "react";
 import { Button, Card, Col, Container, Row, Spinner } from "react-bootstrap";
 import { Link, withRouter } from "react-router-dom";
 import bgImage from "../assets/images/bgimg.jpg";
+import { useDispatch } from "react-redux";
+import { addUserClick } from "./redux/actions/UserClickAction";
 
 const IssuesList = (props) => {
   const [searchText, setSearchText] = useState("");
   const handleSearchText = (event) => {
     setSearchText(event.target.value);
   };
+
+  const dispatch = useDispatch();
+  const viewDetailsHandler = (key) => {
+    dispatch(addUserClick(key.id, key.name));
+    props.history.push({ pathname: "/issue/" + key.id });
+  };
   const issueListToDisplay = props.issues
     .filter((val) => {
       if (searchText === "") {
         return val;
-      } else if (
-        val.description.toLowerCase().includes(searchText.toLowerCase())
-      ) {
+      } else if (val.name.toLowerCase().includes(searchText.toLowerCase())) {
         return val;
       }
     })
@@ -28,17 +34,13 @@ const IssuesList = (props) => {
             style={{ height: "12rem" }}
           />
           <Card.ImgOverlay>
-            <Card.Title className="text-truncate">
-              {item.description}
-            </Card.Title>
+            <Card.Title className="text-truncate">{item.name}</Card.Title>
             <Card.Subtitle className="mt-3 mb-5 text-muted">
               {item.severity}
             </Card.Subtitle>
             <Button
               variant="outline-light"
-              onClick={() =>
-                props.history.push({ pathname: "/issue/" + item.id })
-              }
+              onClick={() => viewDetailsHandler(item)}
             >
               View Details
             </Button>

@@ -5,6 +5,7 @@ import {
   FETCH_ISSUES_ERROR,
   FETCH_ISSUES_REQUEST,
   FETCH_ISSUES_SUCCESS,
+  ADD_USER_CLICK,
 } from "../Constants";
 
 const initialState = {
@@ -54,6 +55,27 @@ const issueReducer = (state = initialState, action) => {
         issues: [],
         error: action.payload,
       };
+
+    // case ADD_USER_CLICK:
+    //   console.log("ADD USER CLICK REDUCER", action.payload);
+    //   return {
+    //     ...state,
+    //     issues: state.issues.filter((item) => {
+    //       console.log("Inside MAP", item);
+    //       if (item.id === action.payload) {
+    //         console.log("Inside the equals", {
+    //           ...item,
+    //           userclicks: item.userclicks + 1,
+    //         });
+    //         return {
+    //           ...item,
+    //           userclicks: item.userclicks + 1,
+    //         };
+    //       } else {
+    //         return item;
+    //       }
+    //     }),
+    //   };
 
     default:
       return state;

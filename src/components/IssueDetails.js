@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 const IssueDetails = (props) => {
   const [state, setstate] = useState({
     id: "",
+    name: "",
     description: "",
     severity: "",
     status: "",
@@ -39,6 +40,9 @@ const IssueDetails = (props) => {
         <h1>Issue Details</h1>
         <Row>
           <Col sm={8}>
+            <p>
+              <strong>Name : </strong> {state.name}
+            </p>
             <p>
               <strong>Issue Description : </strong> {state.description}
             </p>

@@ -8,11 +8,16 @@ import { addIssueAPI } from "./redux/actions/IssueActions";
 const AddIssue = (props) => {
   const formik = useFormik({
     initialValues: {
+      Name: "",
       Description: "",
       Severity: "Critical",
       Status: "Open",
     },
     validationSchema: Yup.object({
+      Name: Yup.string()
+        .min(2, "Minimum two characters required")
+        .max(20, "Max twenty characters can be used for Name")
+        .required("Name is reuired"),
       Description: Yup.string()
         .min(2, "Minimum two characters required")
         .max(50, "Max fifty characters")
@@ -23,6 +28,7 @@ const AddIssue = (props) => {
     onSubmit: (values) => {
       const addIssue = props.addIssue;
       addIssue({
+        name: values.Name,
         description: values.Description,
         severity: values.Severity,
         status: values.Status,
@@ -36,6 +42,18 @@ const AddIssue = (props) => {
       <Container>
         <h1>Add Issue</h1>
         <Form onSubmit={formik.handleSubmit}>
+          <Form.Group>
+            <Form.Label>Name</Form.Label>
+            <Form.Control
+              type="text"
+              name="Name"
+              onChange={formik.handleChange}
+              value={formik.values.Name}
+            ></Form.Control>
+            {formik.errors.Name && formik.touched.Name && (
+              <p style={{ color: "red" }}>{formik.errors.Name}</p>
+            )}
+          </Form.Group>
           <Form.Group>
             <Form.Label>Description</Form.Label>
             <Form.Control
