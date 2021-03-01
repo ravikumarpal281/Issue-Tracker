@@ -10,6 +10,7 @@ import AddIssue from "./components/AddIssue";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import IssueDetails from "./components/IssueDetails";
 import EditIssue from "./components/EditIssue";
+import TopIssuesInfo from "./components/TopIssuesInfo";
 function App() {
   return (
     <Provider store={store}>
@@ -23,6 +24,7 @@ function App() {
             <Route path="/Register" exact component={SignUp} />
             <Route path="/issue/:id" exact component={IssueDetails} />
             <Route path="/editIssue/:id" exact component={EditIssue} />
+            <Route path="/TopIssues" exact component={TopIssuesInfo} />
           </Switch>
         </div>
       </BrowserRouter>

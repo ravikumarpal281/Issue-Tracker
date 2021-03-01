@@ -35,6 +35,9 @@ const Navigation = (props) => {
               <NavLink to="/AddIssue">Add Issue</NavLink>
             </Nav.Link>
             {user}
+            <Nav.Link>
+              <NavLink to="/TopIssues">Issues Info</NavLink>
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
