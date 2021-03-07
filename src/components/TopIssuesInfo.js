@@ -10,11 +10,8 @@ const TopIssuesInfo = () => {
       return b.numberOfViews - a.numberOfViews;
     })
     .slice(0, 5);
-  console.log("topIssues", topIssues);
   const topNumberOfViews = topIssues.map((item) => item.numberOfViews);
-  console.log("NUMBER OF VIEWS", topNumberOfViews);
   const issueNames = topIssues.map((item) => item.issueName);
-  console.log("NAME OF VIEWS", issueNames);
 
   const data = {
     labels: issueNames,

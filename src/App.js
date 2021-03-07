@@ -1,7 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Provider } from "react-redux";
 import "./App.css";
-import HomePage from "./components/HomePage";
+import HomePage from "./components/HomePage/HomePage";
 import NavBar from "./components/NavBar";
 import store from "./components/redux/store";
 import SignUp from "./components/SignUp";
@@ -11,7 +11,9 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import IssueDetails from "./components/IssueDetails";
 import EditIssue from "./components/EditIssue";
 import TopIssuesInfo from "./components/TopIssuesInfo";
-function App() {
+import ProtectedRoute from "./components/ProtectedRoute";
+
+function App(props) {
   return (
     <Provider store={store}>
       <BrowserRouter>
@@ -22,7 +24,12 @@ function App() {
             <Route path="/AddIssue" exact component={AddIssue} />
             <Route path="/Login" exact component={SignIn} />
             <Route path="/Register" exact component={SignUp} />
-            <Route path="/issue/:id" exact component={IssueDetails} />
+            <ProtectedRoute
+              path="/issue/:id"
+              exact
+              component={IssueDetails}
+            ></ProtectedRoute>
+            {/* <Route path="/issue/:id" exact component={IssueDetails} /> */}
             <Route path="/editIssue/:id" exact component={EditIssue} />
             <Route path="/TopIssues" exact component={TopIssuesInfo} />
           </Switch>

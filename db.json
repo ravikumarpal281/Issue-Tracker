@@ -2,10 +2,10 @@
   "Issues": [
     {
       "id": 1,
-      "name": "Issue One",
+      "name": "Issue One After Edit",
       "description": "On Clicking Delete, the application crashes",
       "severity": "Critical",
-      "status": "Open"
+      "status": "In Progress"
     },
     {
       "id": 2,
@@ -50,11 +50,18 @@
       "id": 8
     },
     {
-      "name": "Issue Nine",
-      "description": "Issue after PATCHING TWO",
-      "severity": "Major",
-      "status": "Open",
+      "name": "Latest Issue",
+      "description": "This is the latest issue",
+      "severity": "Minor",
+      "status": "In Progress",
       "id": 9
+    },
+    {
+      "name": "Half Filled Form",
+      "description": "This is the test for the half filled  form",
+      "severity": "Major",
+      "status": "Closed",
+      "id": 10
     }
   ],
   "Users": [
@@ -107,6 +114,51 @@
       "location": "Hyderabad",
       "mobileNumber": "07829820381",
       "id": 6
+    },
+    {
+      "email": "ravi.proudindian@live.com",
+      "password": "123",
+      "firstName": "RAVI",
+      "lastName": "PAL",
+      "location": "Hyderabad",
+      "mobileNumber": "07829820381",
+      "id": 7
+    },
+    {
+      "email": "ravi.proudindian@live.com",
+      "password": "123",
+      "firstName": "RAVI",
+      "lastName": "PAL",
+      "location": "Hyderabad",
+      "mobileNumber": "07829820381",
+      "id": 8
+    },
+    {
+      "email": "abc@abc.com",
+      "password": "123",
+      "firstName": "ABC",
+      "lastName": "YZ",
+      "location": "Hyderabad",
+      "mobileNumber": "07829820381",
+      "id": 9
+    },
+    {
+      "email": "qwe@qwe.com",
+      "password": "123",
+      "firstName": "poi",
+      "lastName": "poi",
+      "location": "sdf",
+      "mobileNumber": "124q23432",
+      "id": 10
+    },
+    {
+      "email": "halfForm@test.com",
+      "password": "123",
+      "firstName": "Half",
+      "lastName": "Form",
+      "location": "Hyderabad",
+      "mobileNumber": "07829820381",
+      "id": 11
     }
   ]
 }

@@ -1,0 +1,169 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Edit Issue Snap 1`] = `
+<div>
+  <Container
+    fluid={false}
+  >
+    <h1>
+      Edit Issue
+    </h1>
+    <Card
+      body={false}
+      className="sign-in-form"
+    >
+      <Form
+        className="form-style"
+        inline={false}
+        onSubmit={[Function]}
+      >
+        <FormGroup>
+          <FormLabel
+            column={false}
+            srOnly={false}
+          >
+            Name
+          </FormLabel>
+          <FormControl
+            name="Name"
+            onChange={[Function]}
+            type="text"
+            value=""
+          />
+        </FormGroup>
+        <FormGroup>
+          <FormLabel
+            column={false}
+            srOnly={false}
+          >
+            Description
+          </FormLabel>
+          <FormControl
+            name="Description"
+            onChange={[Function]}
+            type="text"
+            value=""
+          />
+        </FormGroup>
+        <FormGroup>
+          <label>
+            Severity :
+            <select
+              name="Severity"
+              onChange={[Function]}
+              style={
+                Object {
+                  "marginLeft": "5px",
+                }
+              }
+              value=""
+            >
+              <option
+                value="Critical"
+              >
+                Critical
+              </option>
+              <option
+                value="Major"
+              >
+                Major
+              </option>
+              <option
+                value="Minor"
+              >
+                Minor
+              </option>
+            </select>
+          </label>
+        </FormGroup>
+        <FormGroup>
+          <label>
+            Status :
+             
+            <input
+              checked={false}
+              name="Status"
+              onChange={[Function]}
+              style={
+                Object {
+                  "marginLeft": "3px",
+                }
+              }
+              type="radio"
+              value="Open"
+            />
+            <label
+              style={
+                Object {
+                  "marginLeft": "3px",
+                }
+              }
+            >
+              Open
+            </label>
+            <input
+              checked={false}
+              name="Status"
+              onChange={[Function]}
+              style={
+                Object {
+                  "marginLeft": "5px",
+                }
+              }
+              type="radio"
+              value="In Progress"
+            />
+            <label
+              style={
+                Object {
+                  "marginLeft": "3px",
+                }
+              }
+            >
+              In Progress
+            </label>
+            <input
+              checked={false}
+              name="Status"
+              onChange={[Function]}
+              style={
+                Object {
+                  "marginLeft": "5px",
+                }
+              }
+              type="radio"
+              value="Closed"
+            />
+            <label
+              style={
+                Object {
+                  "marginLeft": "3px",
+                }
+              }
+            >
+              Closed
+            </label>
+          </label>
+        </FormGroup>
+        <Button
+          active={false}
+          disabled={false}
+          type="submit"
+          variant="primary"
+        >
+          Submit
+        </Button>
+         
+        <Button
+          active={false}
+          disabled={false}
+          onClick={[Function]}
+          variant="primary"
+        >
+          Cancel
+        </Button>
+      </Form>
+    </Card>
+  </Container>
+</div>
+`;

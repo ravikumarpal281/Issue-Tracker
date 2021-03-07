@@ -9,17 +9,62 @@ const Navigation = (props) => {
   const dispatch = useDispatch();
   const checkUser = userData.currentUser[0];
   const user = userData.currentUser[0] ? (
-    <Nav.Link>
-      <NavLink to="/" onClick={() => dispatch(logoutuser())}>
-        Sign Out
-      </NavLink>
-    </Nav.Link>
+    <Navbar className="navStyle" expand="lg" bg="dark" variant="dark">
+      <Container>
+        <Navbar.Brand onClick={() => props.history.push({ pathname: "/" })}>
+          Issue Tracker
+          <span style={{ marginLeft: "10px" }}>
+            <strong>Welcome {userData.currentUser[0].firstName}</strong>
+          </span>
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="ml-auto">
+            <Nav.Link>
+              <NavLink
+                to="/"
+                exact
+                className="main-nav"
+                activeClassName="main-nav-active"
+              >
+                Home
+              </NavLink>
+            </Nav.Link>
+            <Nav.Link>
+              <NavLink
+                to="/AddIssue"
+                exact
+                className="main-nav"
+                activeClassName="main-nav-active"
+              >
+                Add Issue
+              </NavLink>
+            </Nav.Link>
+            <Nav.Link>
+              <NavLink
+                to="/TopIssues"
+                exact
+                className="main-nav"
+                activeClassName="main-nav-active"
+              >
+                Issues Info
+              </NavLink>
+            </Nav.Link>
+            <Nav.Link>
+              <NavLink
+                to="/"
+                exact
+                onClick={() => dispatch(logoutuser())}
+                className="main-nav"
+              >
+                Sign Out
+              </NavLink>
+            </Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   ) : (
-    <Nav.Link>
-      <NavLink to="/Login">Login/Sign Up</NavLink>
-    </Nav.Link>
-  );
-  return (
     <Navbar className="navStyle" expand="lg" bg="dark" variant="dark">
       <Container>
         <Navbar.Brand onClick={() => props.history.push({ pathname: "/" })}>
@@ -29,20 +74,41 @@ const Navigation = (props) => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto">
             <Nav.Link>
-              <NavLink to="/">Home</NavLink>
+              <NavLink
+                to="/"
+                exact
+                className="main-nav"
+                activeClassName="main-nav-active"
+              >
+                Home
+              </NavLink>
             </Nav.Link>
             <Nav.Link>
-              <NavLink to="/AddIssue">Add Issue</NavLink>
+              <NavLink
+                to="/Login"
+                exact
+                className="main-nav"
+                activeClassName="main-nav-active"
+              >
+                Login
+              </NavLink>
             </Nav.Link>
-            {user}
             <Nav.Link>
-              <NavLink to="/TopIssues">Issues Info</NavLink>
+              <NavLink
+                to="/Register"
+                exact
+                className="main-nav"
+                activeClassName="main-nav-active"
+              >
+                Sign Up
+              </NavLink>
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
     </Navbar>
   );
+  return <>{user}</>;
 };
 
 export default withRouter(Navigation);

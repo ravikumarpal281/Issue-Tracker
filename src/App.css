@@ -27,3 +27,30 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+.main-nav-active {
+  color: tomato;
+}
+
+.main-nav:hover {
+  color: tomato;
+}
+
+.sign-in-form {
+  background-color: lightblue;
+  display: flex;
+  margin-top: 1px;
+  width: 100%;
+}
+
+.sign-in-form > div {
+  font-size: 20px;
+  width: 100%;
+}
+
+.form-style {
+  margin-left: 10px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  align-items: center;
+}

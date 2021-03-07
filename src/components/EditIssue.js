@@ -1,7 +1,7 @@
 import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { Button, Container, Form } from "react-bootstrap";
+import { Button, Container, Form, Card } from "react-bootstrap";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
@@ -15,7 +15,7 @@ const EditIssue = (props) => {
   });
 
   useEffect(() => {
-    console.log("Props Id", props.match.params.id);
+    console.log("Props Id", props);
     axios
       .get(`http://localhost:30001/Issues/${props.match.params.id}`)
       .then((response) => setstate(response.data))
@@ -58,83 +58,85 @@ const EditIssue = (props) => {
     <div>
       <Container>
         <h1>Edit Issue</h1>
-        <Form onSubmit={formik.handleSubmit}>
-          <Form.Group>
-            <Form.Label>Name</Form.Label>
-            <Form.Control
-              type="text"
-              name="Name"
-              onChange={formik.handleChange}
-              value={formik.values.Name}
-            ></Form.Control>
-            {formik.errors.Name && formik.touched.Name && (
-              <p style={{ color: "red" }}>{formik.errors.Name}</p>
-            )}
-          </Form.Group>
-          <Form.Group>
-            <Form.Label>Description</Form.Label>
-            <Form.Control
-              type="text"
-              name="Description"
-              onChange={formik.handleChange}
-              value={formik.values.Description}
-            ></Form.Control>
-            {formik.errors.Description && formik.touched.Description && (
-              <p style={{ color: "red" }}>{formik.errors.Description}</p>
-            )}
-          </Form.Group>
-          <Form.Group>
-            <label>
-              Severity :
-              <select
-                style={{ marginLeft: "5px" }}
-                value={formik.values.Severity}
-                name="Severity"
+        <Card className="sign-in-form">
+          <Form onSubmit={formik.handleSubmit} className="form-style">
+            <Form.Group>
+              <Form.Label>Name</Form.Label>
+              <Form.Control
+                type="text"
+                name="Name"
                 onChange={formik.handleChange}
-              >
-                <option value="Critical">Critical</option>
-                <option value="Major">Major</option>
-                <option value="Minor">Minor</option>
-              </select>
-            </label>
-          </Form.Group>
-          <Form.Group>
-            <label>
-              Status :{" "}
-              <input
-                style={{ marginLeft: "3px" }}
-                type="radio"
-                name="Status"
-                value="Open"
+                value={formik.values.Name}
+              ></Form.Control>
+              {formik.errors.Name && formik.touched.Name && (
+                <p style={{ color: "red" }}>{formik.errors.Name}</p>
+              )}
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>Description</Form.Label>
+              <Form.Control
+                type="text"
+                name="Description"
                 onChange={formik.handleChange}
-                checked={formik.values.Status === "Open"}
-              ></input>
-              <label style={{ marginLeft: "3px" }}>Open</label>
-              <input
-                style={{ marginLeft: "5px" }}
-                type="radio"
-                name="Status"
-                value="In Progress"
-                onChange={formik.handleChange}
-                checked={formik.values.Status === "In Progress"}
-              ></input>
-              <label style={{ marginLeft: "3px" }}>In Progress</label>
-              <input
-                style={{ marginLeft: "5px" }}
-                type="radio"
-                name="Status"
-                value="Closed"
-                onChange={formik.handleChange}
-                checked={formik.values.Status === "Closed"}
-              ></input>
-              <label style={{ marginLeft: "3px" }}>Closed</label>
-            </label>
-          </Form.Group>
-          <Button type="submit">Submit</Button>{" "}
-          <Button onClick={() => props.history.push({ pathname: "/" })}>
-            Cancel
-          </Button>
-        </Form>
+                value={formik.values.Description}
+              ></Form.Control>
+              {formik.errors.Description && formik.touched.Description && (
+                <p style={{ color: "red" }}>{formik.errors.Description}</p>
+              )}
+            </Form.Group>
+            <Form.Group>
+              <label>
+                Severity :
+                <select
+                  style={{ marginLeft: "5px" }}
+                  value={formik.values.Severity}
+                  name="Severity"
+                  onChange={formik.handleChange}
+                >
+                  <option value="Critical">Critical</option>
+                  <option value="Major">Major</option>
+                  <option value="Minor">Minor</option>
+                </select>
+              </label>
+            </Form.Group>
+            <Form.Group>
+              <label>
+                Status :{" "}
+                <input
+                  style={{ marginLeft: "3px" }}
+                  type="radio"
+                  name="Status"
+                  value="Open"
+                  onChange={formik.handleChange}
+                  checked={formik.values.Status === "Open"}
+                ></input>
+                <label style={{ marginLeft: "3px" }}>Open</label>
+                <input
+                  style={{ marginLeft: "5px" }}
+                  type="radio"
+                  name="Status"
+                  value="In Progress"
+                  onChange={formik.handleChange}
+                  checked={formik.values.Status === "In Progress"}
+                ></input>
+                <label style={{ marginLeft: "3px" }}>In Progress</label>
+                <input
+                  style={{ marginLeft: "5px" }}
+                  type="radio"
+                  name="Status"
+                  value="Closed"
+                  onChange={formik.handleChange}
+                  checked={formik.values.Status === "Closed"}
+                ></input>
+                <label style={{ marginLeft: "3px" }}>Closed</label>
+              </label>
+            </Form.Group>
+            <Button type="submit">Submit</Button>{" "}
+            <Button onClick={() => props.history.push({ pathname: "/" })}>
+              Cancel
+            </Button>
+          </Form>
+        </Card>
       </Container>
     </div>
   );

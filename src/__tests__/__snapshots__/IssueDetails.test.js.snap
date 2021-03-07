@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Issue Details Snap 1`] = `
+<div>
+  <Container
+    fluid={false}
+  >
+    <h1>
+      Issue Details
+    </h1>
+    <Card
+      body={false}
+      className="sign-in-form"
+    >
+      <Row
+        noGutters={false}
+      >
+        <Col
+          className="form-style"
+          sm={8}
+        >
+          <p>
+            <strong>
+              Name : 
+            </strong>
+             
+          </p>
+          <p>
+            <strong>
+              Issue Description : 
+            </strong>
+             
+          </p>
+          <p>
+            <strong>
+              Severity : 
+            </strong>
+             
+          </p>
+          <p>
+            <strong>
+              Status : 
+            </strong>
+             
+          </p>
+          <Button
+            active={false}
+            disabled={false}
+            onClick={[Function]}
+            variant="outline-primary"
+          >
+            Edit Issue
+          </Button>
+           
+          <Button
+            active={false}
+            disabled={false}
+            onClick={[Function]}
+            variant="outline-danger"
+          >
+            Delete Issue
+          </Button>
+           
+        </Col>
+      </Row>
+    </Card>
+  </Container>
+</div>
+`;
