@@ -1,4 +1,5 @@
 import axios from "axios";
+import AuthService from "../../../services/AuthService";
 import {
   LOGIN_USER_REQUEST,
   LOGIN_USER_REQUEST_ERROR,
@@ -69,21 +70,46 @@ export const registerUserAPI = (userDetails) => {
       });
   };
 };
-
-export const loginUserAPI = (loginDetails) => {
-  console.log("UserACTION PAYLOAD", loginDetails);
-  return (dispatch) => {
-    dispatch(loginUserRequest);
-    axios
-      .get(
-        `http://localhost:30001/Users?email=${loginDetails.Email}&password=${loginDetails.Password}`
-      )
-      .then((response) => {
-        console.log("response data", response);
-        dispatch(loginUserSuccess(response.data));
-      })
-      .catch((error) => {
-        dispatch(loginUserError(error));
-      });
-  };
+export const loginUserAPI = (loginDetails) => async (dispatch) => {
+  try {
+    const res = await axios.get(
+      `http://localhost:30001/Users?email=${loginDetails.Email}&password=${loginDetails.Password}`
+    );
+    dispatch({
+      type: LOGIN_USER_REQUEST_SUCCESS,
+      payload: res.data,
+    });
+  } catch (error) {
+    dispatch(loginUserError(error.data.error));
+  }
 };
+// export const loginUserAPI = (loginDetails) => (dispatch) => {
+//   return AuthService.login(loginDetails).then(
+//     (data) => {
+//       dispatch(loginUserSuccess(data));
+//       return Promise.resolve();
+//     },
+//     (error) => {
+//       dispatch(loginUserError(error.message));
+//       return Promise.reject();
+//     }
+//   );
+// };
+
+// export const loginUserAPI = (loginDetails) => {
+//   console.log("UserACTION PAYLOAD", loginDetails);
+//   return (dispatch) => {
+//     dispatch(loginUserRequest);
+//     axios
+//       .get(
+//         `http://localhost:30001/Users?email=${loginDetails.Email}&password=${loginDetails.Password}`
+//       )
+//       .then((response) => {
+//         console.log("response data", response);
+//         dispatch(loginUserSuccess(response.data));
+//       })
+//       .catch((error) => {
+//         dispatch(loginUserError(error));
+//       });
+//   };
+// };

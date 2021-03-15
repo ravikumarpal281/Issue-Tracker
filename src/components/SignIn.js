@@ -1,11 +1,28 @@
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Container, Form, Row, Col, Card } from "react-bootstrap";
 import { loginUserAPI } from "./redux/actions/UserActions";
 import { connect } from "react-redux";
 
 const SignIn = (props) => {
+  const [currentUserState, setCurrentUserState] = useState({
+    email: "",
+    firstName: "",
+    isLoggedIn: false,
+  });
+  useEffect(() => {
+    console.log("Inside UseEffect ", props.userData.currentUser);
+    if (props.userData.currentUser[0]) {
+      console.log("Inside UseEffect IF");
+      setCurrentUserState({
+        email: props.userData.currentUser[0].email,
+        firstName: props.userData.currentUser[0].firstName,
+        isLoggedIn: true,
+      });
+    }
+    console.log("After UseEffect IF", currentUserState);
+  }, [props.userData.currentUser]);
   const formik = useFormik({
     initialValues: {
       Email: "",
@@ -20,7 +37,6 @@ const SignIn = (props) => {
       props.history.push({ pathname: "/" });
     },
   });
-
   return (
     <div className="Div_signIn">
       <Container>

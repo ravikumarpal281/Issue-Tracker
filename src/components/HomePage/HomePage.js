@@ -1,6 +1,5 @@
 import React from "react";
 import { useEffect } from "react";
-
 import { connect } from "react-redux";
 import { fetchIssuesAPI } from "../redux/actions/IssueActions";
 import HomePageUI from "./HomePageUI";

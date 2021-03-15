@@ -4,6 +4,7 @@ import * as Yup from "yup";
 import { Button, Container, Form, Card } from "react-bootstrap";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { withRouter } from "react-router-dom";
 
 const EditIssue = (props) => {
   const [issueState, setstate] = useState({
@@ -17,7 +18,7 @@ const EditIssue = (props) => {
   useEffect(() => {
     console.log("Props Id", props);
     axios
-      .get(`http://localhost:30001/Issues/${props.match.params.id}`)
+      .get(`http://localhost:30001/Issues/${props.id.params.id}`)
       .then((response) => setstate(response.data))
       .catch((error) => console.error(error.message));
   }, []);
@@ -44,7 +45,7 @@ const EditIssue = (props) => {
     }),
     onSubmit: (values) => {
       axios
-        .patch(`http://localhost:30001/Issues/${props.match.params.id}`, {
+        .patch(`http://localhost:30001/Issues/${props.id.params.id}`, {
           name: values.Name,
           description: values.Description,
           severity: values.Severity,
@@ -142,4 +143,4 @@ const EditIssue = (props) => {
   );
 };
 
-export default EditIssue;
+export default withRouter(EditIssue);

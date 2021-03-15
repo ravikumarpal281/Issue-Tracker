@@ -43,7 +43,6 @@ const UserReducer = (state = initialState, action) => {
     case LOGIN_USER_REQUEST_SUCCESS:
       console.log("Login Success REDUCER", state);
       return {
-        ...state,
         loading: false,
         currentUser: action.payload,
         error: "",

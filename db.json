@@ -5,7 +5,7 @@
       "name": "Issue One After Edit",
       "description": "On Clicking Delete, the application crashes",
       "severity": "Critical",
-      "status": "In Progress"
+      "status": "Open"
     },
     {
       "id": 2,
@@ -22,46 +22,32 @@
       "status": "In Progress"
     },
     {
-      "name": "Issue Five",
-      "description": "After EDIT Third",
-      "severity": "Critical",
+      "name": "Issue delete Test",
+      "description": "Test delete functions ",
+      "severity": "Major",
       "status": "In Progress",
+      "id": 4
+    },
+    {
+      "name": "Test delete Agaib",
+      "description": "sdfsadgasdgdsgdfg",
+      "severity": "Critical",
+      "status": "Open",
       "id": 5
     },
     {
-      "name": "Issue Six",
-      "description": "ABCDEF",
+      "name": "Issue Seven",
+      "description": "Seventh Issue",
       "severity": "Critical",
       "status": "Open",
       "id": 6
     },
     {
-      "name": "Issue Seven",
-      "description": "SCREENSHOT",
-      "severity": "Major",
-      "status": "In Progress",
-      "id": 7
-    },
-    {
-      "name": "Issue Eight",
-      "description": "New One",
+      "name": "Issue eight",
+      "description": "eighth issue",
       "severity": "Critical",
       "status": "Open",
-      "id": 8
-    },
-    {
-      "name": "Latest Issue",
-      "description": "This is the latest issue",
-      "severity": "Minor",
-      "status": "In Progress",
-      "id": 9
-    },
-    {
-      "name": "Half Filled Form",
-      "description": "This is the test for the half filled  form",
-      "severity": "Major",
-      "status": "Closed",
-      "id": 10
+      "id": 7
     }
   ],
   "Users": [

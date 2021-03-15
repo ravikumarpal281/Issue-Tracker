@@ -6,6 +6,7 @@ import {
   FETCH_ISSUES_ERROR,
   FETCH_ISSUES_REQUEST,
   FETCH_ISSUES_SUCCESS,
+  DELETE_ISSUE_SUCCESS,
 } from "../Constants";
 
 import axios from "axios";
@@ -76,4 +77,20 @@ export const addIssueAPI = (issueObj) => {
         dispatch(addIssueFailure(err.message));
       });
   };
+};
+
+export const deleteIssueAPI = (id, history) => async (dispatch) => {
+  try {
+    const response = await axios.delete(`http://localhost:30001/Issues/${id}`);
+    if (response.status === 200) {
+      console.log("Inside 200");
+      dispatch({
+        type: DELETE_ISSUE_SUCCESS,
+        payload: id,
+      });
+      history.push({ pathname: "/" });
+    }
+  } catch (error) {
+    alert(`Issue was not deleted due to ${error.data.error.message}`);
+  }
 };

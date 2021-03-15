@@ -6,6 +6,7 @@ import {
   FETCH_ISSUES_REQUEST,
   FETCH_ISSUES_SUCCESS,
   ADD_USER_CLICK,
+  DELETE_ISSUE_SUCCESS,
 } from "../Constants";
 
 const initialState = {
@@ -55,7 +56,14 @@ const issueReducer = (state = initialState, action) => {
         issues: [],
         error: action.payload,
       };
-
+    case DELETE_ISSUE_SUCCESS:
+      const id = action.payload;
+      const afterDeleteIssues = state.issues.filter((item) => item.id !== id);
+      return {
+        loading: false,
+        issues: afterDeleteIssues,
+        error: "",
+      };
     default:
       return state;
   }
