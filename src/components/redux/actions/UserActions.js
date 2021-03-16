@@ -8,6 +8,7 @@ import {
   REGISTER_USER_ERROR,
   REGISTER_USER_RQUEST,
   REGISTER_USER_SUCCESS,
+  UPDATE_CUSTOM_FIELD,
 } from "../Constants";
 
 export const registerUserRequest = () => {
@@ -81,6 +82,26 @@ export const loginUserAPI = (loginDetails) => async (dispatch) => {
     });
   } catch (error) {
     dispatch(loginUserError(error.data.error));
+  }
+};
+
+export const updateCustomField = (id, fieldsChanged, history) => async (
+  dispatch
+) => {
+  try {
+    const response = await axios.patch(`http://localhost:30001/Users/${id}`, {
+      customFields: fieldsChanged,
+    });
+    if (response.status === 200) {
+      console.log("Inside 200");
+      dispatch({
+        type: UPDATE_CUSTOM_FIELD,
+        payload: fieldsChanged,
+      });
+      history.push({ pathname: "/" });
+    }
+  } catch (error) {
+    alert(`Fields not updated due to  ${error}`);
   }
 };
 // export const loginUserAPI = (loginDetails) => (dispatch) => {

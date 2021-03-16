@@ -34,20 +34,6 @@
       "severity": "Critical",
       "status": "Open",
       "id": 5
-    },
-    {
-      "name": "Issue Seven",
-      "description": "Seventh Issue",
-      "severity": "Critical",
-      "status": "Open",
-      "id": 6
-    },
-    {
-      "name": "Issue eight",
-      "description": "eighth issue",
-      "severity": "Critical",
-      "status": "Open",
-      "id": 7
     }
   ],
   "Users": [
@@ -58,7 +44,11 @@
       "firstName": "ABC",
       "lastName": "XYZ",
       "location": "Noida",
-      "mobileNumber": 1234567890
+      "mobileNumber": 1234567890,
+      "customFields": [
+        "name",
+        "severity"
+      ]
     },
     {
       "id": 2,
@@ -67,7 +57,11 @@
       "firstName": "ABCD",
       "lastName": "WXYZ",
       "location": "Noida",
-      "mobileNumber": 1234567890
+      "mobileNumber": 1234567890,
+      "customFields": [
+        "name",
+        "severity"
+      ]
     },
     {
       "email": "three@issues.com",
@@ -76,12 +70,11 @@
       "lastName": "THREE",
       "location": "Noida",
       "mobileNumber": 1234567890,
-      "id": 3
-    },
-    {
-      "email": "three@issues.com",
-      "password": "three",
-      "id": 4
+      "id": 3,
+      "customFields": [
+        "name",
+        "severity"
+      ]
     },
     {
       "email": "three@issues.com",
@@ -90,7 +83,11 @@
       "lastName": "THREE",
       "location": "Noida",
       "mobileNumber": 1234567890,
-      "id": 5
+      "id": 5,
+      "customFields": [
+        "name",
+        "severity"
+      ]
     },
     {
       "email": "ravi.proudindian@gmail.com",
@@ -99,7 +96,10 @@
       "lastName": "PAL",
       "location": "Hyderabad",
       "mobileNumber": "07829820381",
-      "id": 6
+      "id": 6,
+      "customFields": [
+        "name"
+      ]
     },
     {
       "email": "ravi.proudindian@live.com",
@@ -117,7 +117,11 @@
       "lastName": "PAL",
       "location": "Hyderabad",
       "mobileNumber": "07829820381",
-      "id": 8
+      "id": 8,
+      "customFields": [
+        "name",
+        "severity"
+      ]
     },
     {
       "email": "abc@abc.com",
@@ -135,7 +139,11 @@
       "lastName": "poi",
       "location": "sdf",
       "mobileNumber": "124q23432",
-      "id": 10
+      "id": 10,
+      "customFields": [
+        "name",
+        "severity"
+      ]
     },
     {
       "email": "halfForm@test.com",
@@ -144,7 +152,11 @@
       "lastName": "Form",
       "location": "Hyderabad",
       "mobileNumber": "07829820381",
-      "id": 11
+      "id": 11,
+      "customFields": [
+        "name",
+        "severity"
+      ]
     }
   ]
 }

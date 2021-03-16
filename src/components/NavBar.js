@@ -52,6 +52,16 @@ const Navigation = (props) => {
             </Nav.Link>
             <Nav.Link>
               <NavLink
+                to="/FieldCustomization"
+                exact
+                className="main-nav"
+                activeClassName="main-nav-active"
+              >
+                Customize Fields
+              </NavLink>
+            </Nav.Link>
+            <Nav.Link>
+              <NavLink
                 to="/"
                 exact
                 onClick={() => dispatch(logoutuser())}

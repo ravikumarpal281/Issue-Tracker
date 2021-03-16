@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addUserClick } from "../redux/actions/UserClickAction";
 import { Button, Card, Col, Row } from "react-bootstrap";
@@ -6,6 +6,12 @@ import { withRouter } from "react-router-dom";
 import { deleteIssueAPI } from "../redux/actions/IssueActions";
 
 const HomePageCustomizedLayout = ({ item, history }) => {
+  const [customFields, setCustomFields] = useState([
+    "name",
+    "severity",
+    "status",
+    "description",
+  ]);
   const dispatch = useDispatch();
   const userData = useSelector((state) => state.users);
   const viewDetailsHandler = (key) => {
@@ -13,6 +19,22 @@ const HomePageCustomizedLayout = ({ item, history }) => {
     history.push({ pathname: "/issue/" + key.id });
   };
 
+  let customFieldData = null;
+  if (userData.currentUser[0]) {
+    customFieldData = userData.currentUser[0].customFields;
+  } else {
+    customFieldData = customFields;
+  }
+  const customFieldsMapping = customFieldData.map((field) =>
+    field !== "name" ? (
+      <Card.Subtitle className="mt-3 mb-2  text-muted">
+        <strong style={{ textTransform: "uppercase", color: "lightslategray" }}>
+          {field} :
+        </strong>{" "}
+        {item[field]}
+      </Card.Subtitle>
+    ) : null
+  );
   const handleEditIssue = (id) => {
     history.push({ pathname: "/editIssue/" + id });
   };
@@ -38,11 +60,9 @@ const HomePageCustomizedLayout = ({ item, history }) => {
               height: "13rem",
             }}
           >
-            <Card.ImgOverlay>
+            <Card.Body>
               <Card.Title className="text-truncate">{item.name}</Card.Title>
-              <Card.Subtitle className="mt-3 mb-5 text-muted">
-                {item.severity}
-              </Card.Subtitle>
+              {customFieldsMapping}
               <div style={{ float: "right" }}>
                 <Button
                   variant="outline-success"
@@ -66,7 +86,7 @@ const HomePageCustomizedLayout = ({ item, history }) => {
                   Delete Issue
                 </Button>
               </div>
-            </Card.ImgOverlay>
+            </Card.Body>
           </Card>
         </Col>
       </Row>

@@ -35,7 +35,7 @@ const EditIssue = (props) => {
       Name: Yup.string()
         .min(2, "Minimum two characters required")
         .max(20, "Max twenty characters can be used for Name")
-        .required("Name is reuired"),
+        .required("Name is required"),
       Description: Yup.string()
         .min(2, "Minimum two characters required")
         .max(50, "Max fifty characters")

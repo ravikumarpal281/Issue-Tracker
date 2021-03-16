@@ -6,6 +6,7 @@ import {
   REGISTER_USER_ERROR,
   REGISTER_USER_RQUEST,
   REGISTER_USER_SUCCESS,
+  UPDATE_CUSTOM_FIELD,
 } from "../Constants";
 
 const initialState = {
@@ -57,6 +58,18 @@ const UserReducer = (state = initialState, action) => {
       return {
         ...state,
         currentUser: [],
+      };
+    case UPDATE_CUSTOM_FIELD:
+      console.log("Action PAYLOAD RDUCER", action.payload);
+      console.log("ReduCER", {
+        ...state.currentUser[0],
+        customFields: action.payload,
+      });
+      return {
+        ...state,
+        currentUser: [
+          { ...state.currentUser[0], customFields: action.payload },
+        ],
       };
     default:
       return state;

@@ -15,6 +15,12 @@ const IssueDetails = lazy(() => import("./components/IssueDetails"));
 const EditIssue = lazy(() => import("./components/EditIssue"));
 const TopIssuesInfo = lazy(() => import("./components/TopIssuesInfo"));
 const ProtectedRoute = lazy(() => import("./components/ProtectedRoute"));
+const FieldCustomization = lazy(() =>
+  import("./components/FieldCustomization/FieldCustomization")
+);
+const EditFields = lazy(() =>
+  import("./components/FieldCustomization/EditFields")
+);
 
 function App(props) {
   return (
@@ -28,6 +34,12 @@ function App(props) {
               <Route path="/AddIssue" exact component={AddIssue} />
               <Route path="/Login" exact component={SignIn} />
               <Route path="/Register" exact component={SignUp} />
+              <Route
+                path="/FieldCustomization"
+                exact
+                component={FieldCustomization}
+              />
+              <Route path="/FieldEdit/:id" exact component={EditFields} />
               <ProtectedRoute
                 path="/issue/:id"
                 exact
